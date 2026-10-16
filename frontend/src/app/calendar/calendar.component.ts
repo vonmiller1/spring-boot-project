@@ -9,7 +9,7 @@ export class CalendarComponent {
 
     // date picker
     public date:Date = new Date();
-    private _minDate:Date = null;
+    private _minDate: Date | null = null;
     private _events:Array<any>;
     private _tomorrow:Date;
     private _afterTomorrow:Date;
