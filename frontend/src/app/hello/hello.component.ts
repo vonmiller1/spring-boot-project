@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { HelloService } from './hello.service';
 
 interface MessageJson {
@@ -17,14 +18,13 @@ export class HelloComponent implements OnInit, OnDestroy {
     // vars
     private jsonResponse: string;
     private messages: Array<MessageJson>;
-    private _subscription;
+    private _subscription: Subscription;
 
     // constructor
     constructor(private _helloService: HelloService) {}
 
     // on-init
     ngOnInit() {
-        // save _subscription
         this._subscription = this._helloService.getTest()
             .subscribe(
                 (data) => {
@@ -38,7 +38,8 @@ export class HelloComponent implements OnInit, OnDestroy {
 
     // on-destroy
     ngOnDestroy() {
-        // unsubscribe
-        this._subscription.unsubscribe();
+        if (this._subscription) {
+            this._subscription.unsubscribe();
+        }
     }
 }
