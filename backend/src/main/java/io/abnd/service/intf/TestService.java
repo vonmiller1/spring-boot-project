@@ -5,5 +5,5 @@ import java.util.List;
 import io.abnd.model.Message;
 
 public interface TestService {
-    public List<Message> test();
+    List<Message> test();
 }
