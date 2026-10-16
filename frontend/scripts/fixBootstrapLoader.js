@@ -1,5 +1,6 @@
 /* fixBootstrapLoader.js */
 const fs = require('fs');
+const path = require('path');
 
 /**
  *
@@ -10,19 +11,18 @@ const fs = require('fs');
 
 // create post css config
 function createPostCssConfig() {
-  let file = 'node_modules/bootstrap-loader/postcss.config.js';
-  let content = 'module.exports = {};\n';
-  let fw = fs.createWriteStream(file);
- 
-  // log when finished
-  fw.on('finish', function() {
-    console.log('postcss bootstrap-loader fix applied');
-    console.log('  -postcss.config.js has been created\n');
-  });
+  const file = path.join('node_modules', 'bootstrap-loader', 'postcss.config.js');
+  const content = 'module.exports = {};\n';
 
-  // write and end
-  fw.write(content);
-  fw.end();
+  fs.writeFile(file, content, { flag: 'w' }, function (err) {
+    if (err) {
+      console.error('postcss bootstrap-loader fix failed:', err.message);
+      process.exitCode = 1;
+      return;
+    }
+    console.log('postcss bootstrap-loader fix applied');
+    console.log('  - postcss.config.js has been created\n');
+  });
 }
 
 // run function
