@@ -17,5 +17,5 @@ if (ENV === 'production') {
   // prod
 } else {
   // dev
-  require('angular2-hmr');
+  require('@angularclass/hmr');
 }
