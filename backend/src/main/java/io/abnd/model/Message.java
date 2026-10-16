@@ -2,8 +2,8 @@ package io.abnd.model;
 
 public class Message {
 
-    public String title;
-    public String message;
+    private String title;
+    private String message;
 
     public Message(String title, String message) {
         this.title = title;
