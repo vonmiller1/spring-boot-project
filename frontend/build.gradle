@@ -36,8 +36,8 @@ clean.dependsOn(npmClean)
 
 // build task for npm
 task build {}
-build.dependsOn(npm_install)
-build.dependsOn(npm_run_build)
+build.dependsOn(npm_install, npm_run_build)
+npm_run_build.mustRunAfter(npm_install)
 
 // assemble task for npm
 task assemble {}
