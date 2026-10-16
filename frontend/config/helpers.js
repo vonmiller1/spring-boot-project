@@ -17,7 +17,7 @@ function isWebpackDevServer() {
 
 function rootNode(args) {
     args = Array.prototype.slice.call(arguments, 0);
-    return root.apply(path, ['node_modules'].concat(args));
+    return root.apply(null, ['node_modules'].concat(args));
 }
 
 function checkNodeImport(context, request, cb) {
