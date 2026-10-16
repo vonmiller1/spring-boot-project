@@ -7,6 +7,12 @@
 # other
 dump.rdb
 
+# Local secrets and overrides (never commit)
+.env
+.env.*
+*.local.properties
+application-local.properties
+
 # gradle
 .gradle/
 bin/
